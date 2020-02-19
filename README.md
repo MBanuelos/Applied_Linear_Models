@@ -9,4 +9,5 @@ Textbook
 * [01 - Introduction to R](/01_Introduction_to_R.nb.html) 
 * [02 - Summary Graphs](/02_SummaryGraphs.html) 
 * [03 - Residual Sum of Squares](/03_RSS.html) 
+* [04 - Ordinary Least Squares & Variance](/04_LeastSquares_Variance.html)
 </details>
