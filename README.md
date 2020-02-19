@@ -10,4 +10,9 @@ Textbook
 * [02 - Summary Graphs](/02_SummaryGraphs.html) 
 * [03 - Residual Sum of Squares](/03_RSS.html) 
 * [04 - Ordinary Least Squares & Variance](/04_LeastSquares_Variance.html)
+* [05 - LSE Estimates](/05_PropertiesOf_LSEstimates.html)
+* [06 - Confidence Intervals](/06_ConfidenceIntervals_tTest.html)
+* [07 - CI and PI](/07_CI_PredictionIntervals.html)
+* [08 - R2](/08_R2_Residuals.html)
+* [09 - MLR & AV Plots ](/09_MLR_AVPlots.html)
 </details>
