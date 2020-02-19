@@ -1,6 +1,8 @@
 ## Welcome to Applied Linear Models
 
 Textbook 
+ - Weisberg, S. Applied Linear Regression, John Wiley & Sons, Incorporated, 2014. 
+ - James, G., Witten, D., Hastie, T., and Tibshirani, R. An Introduction to Statistical Learning with Applications in R, Springer, 2013.
 
 <details>
 <summary>Lecture Notes / Slides</summary>
