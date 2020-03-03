@@ -1,0 +1,155 @@
+---
+title: "Introduction to R and RStudio"
+author: <b> <a href="http://www.mbgmath.com"> Mario Banuelos </a> </b>
+#date: mbanuelos22@csufresno.edu
+output: 
+  # uncomment to toggle between presentation and html_notebook
+  html_notebook
+  #ioslides_presentation
+---
+
+
+```{r}
+#install.packages('tidyverse')
+#install.packages('openintro')
+#install.pacakgse('ISLR')
+```
+
+## What is R?
+R is a free, open-source software and programming language developed in 1995 at the University of Auckland as an environment for statistical computing and graphics <a href="https://www.stat.auckland.ac.nz/~ihaka/downloads/R-paper.pdf"> (Ikaha and Gentleman, 1996) </a>. Since then, R has become a popular software environment for data analysis in a variety of disciplines.
+
+### Why Should I Learn R?
+
+* It is free and it is a widely used statistical programming language!
+* Reproducible Research
+* <a href="https://cran.r-project.org/web/views/"> Community Resources </a>
+* Learning Resources
+  * ISLR Textbook
+  * <a href="https://rstudio.com/resources/cheatsheets/"> RStudio Cheat Sheets </a>
+  * <a href="https://www.udemy.com/course/r-basics/"> R Basics </a>
+  * <a href="https://ggplot2.tidyverse.org/index.html"> ggplot2 </a>
+
+## RStudio
+
+RStudio has 4 main window panes that allows for 
+
+ * *Script / Editing Pane*
+    * This area allows you to write scripts or entire R Notebooks
+ * *Console*
+    * This interactive area executes code (line-by-line) as you type it
+ * *File Navigator / Plot Viewer / Help Pane*
+    * Shows your current working folder and displays plots + help
+ * *Environment Pane*
+    * Shows any global variables that you can access / manipulate
+    
+    
+### R - Console
+We will write some code to execute in the R Console, covering:
+
+  * Simple Arithmetic
+  * Variables and Variable Assignment
+  
+```{r}
+# Here, we will explore how to use R as a calculator!
+```
+
+---
+
+## R Markdown Notebooks
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. Code can be placed in code chunks and run indepedently.
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*. 
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+
+
+```{r}
+# simple R code chunk
+x <- 2
+y <- 5
+x + y
+```
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file). 
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+
+Note: comments start with a #. It's a great idea to comment your # code.
+
+## ggplot and Data
+
+```{r, message=FALSE}
+library(tidyverse)
+library(openintro)
+library(ISLR)
+```
+
+We will use the `ggplot()` function to build plots. Some things to note:
+
+* The first argument is always the dataset
+* Next, provide the variables from the data to be assigned to `aes`thetic elements of the plot (x and y)
+* Finally, you add a layer with a `+` to specify a `geom`etric object
+
+```{r}
+# load data
+data("textbooks")
+```
+
+```{r}
+# create a histogram of the data
+ggplot(data = textbooks, aes(x = uclaNew), ) + 
+  geom_histogram()
+```
+
+
+What are some observations you notice? 
+
+**Practice:** Create a new `R` chunk and 
+
+  1. Create a histogram of the costs of textbooks (on Amazon) - `amazNew`. What do you notice when compared to the `uclaNew` histogram?
+
+
+---
+
+```{r}
+# creating boxplots
+ggplot(data = textbooks, aes(x=more, y=diff)) +
+  geom_boxplot()
+```
+
+## Loading your own data
+
+If you want to use your own data or analyze existing data (for example <a href=https://trends.google.com/trends/explore?date=all&q=%2Fm%2F04rjg> Google Trends </a>), you can do so by loading it directly into `RStudio`.
+
+```{r}
+# read the multiTimeline.csv file and skip the first line
+math.search <- read.csv('multiTimeline.csv', skip = 1, col.names = c('Month','Math'))
+# create a new column with the date
+math.search$Date <- as.Date(paste(math.search$Month,"-01",sep=""))
+# create a plot
+ggplot(data = math.search, aes(x=Date, y=Math, group=1)) +
+  geom_point() + geom_line() 
+```
+
+---
+
+## Creating Statistical Models
+
+```{r}
+data(Auto)
+
+# Practice! Create a scatterplot with geom_point() of mpg (y) vs horsepower (x)
+ggplot() +
+  geom_point() 
+```
+
+```{r}
+# create a linear simple model
+my.lm <- lm(mpg ~ horsepower, data=Auto)
+summary(my.lm)
+# plot it alongside the data!
+```
+
+
+
